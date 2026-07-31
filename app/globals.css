@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff8fc;
+  --foreground: #222222;
+  --primary: #ff4d8d;
+  --secondary: #ff7eb3;
+  --accent: #6a1b9a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+.reason-card {
+  perspective: 900px;
+}
+
+.reason-card-inner {
+  position: relative;
+  min-height: 11rem;
+  transform-style: preserve-3d;
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reason-card[data-flipped="true"] .reason-card-inner {
+  transform: rotateY(180deg);
+}
+
+.reason-card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reason-card-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reason-card-inner {
+    transition-duration: 1ms;
+  }
+}
+
+@keyframes surprise-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px) rotate(-0.4deg); }
+  40% { transform: translateX(7px) rotate(0.4deg); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.surprise-shake {
+  animation: surprise-shake 520ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surprise-shake {
+    animation: none;
+  }
+}
