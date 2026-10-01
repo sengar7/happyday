@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Happy Girlfriend Day",
-  description: "A love story, made for one person.",
+  title: "Prefix — Command Autocomplete",
+  description: "A fast, Trie-powered command-line autocomplete playground.",
 };
 
 export default function RootLayout({
